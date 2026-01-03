@@ -3,12 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>ShieldHub</title>
+
     <style>
+        /* =========================
+           🔤 폰트 정의 (@font-face)
+           ========================= */
+        @font-face {
+            font-family: "Pretendard";
+            src: url("./fonts/Pretendard-Regular.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Pretendard";
+            src: url("./fonts/Pretendard-Bold.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* =========================
+           기본 스타일
+           ========================= */
         body {
             margin: 0;
             font-family: "Pretendard", Arial, sans-serif;
             background-color: #f4f8ff;
             color: #1f2937;
+
+            /* 텍스트 선택 방지 (선택) */
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         header {
@@ -31,7 +56,7 @@
             color: #2563eb;
             font-size: 15px;
             font-weight: 600;
-            letter-spacing: -0.3px; /* 자간 줄임 */
+            letter-spacing: -0.3px;
             transition: all 0.2s ease;
         }
 
@@ -57,7 +82,7 @@
             font-weight: 700;
             color: #1e40af;
             margin-bottom: 20px;
-            letter-spacing: -1px; /* 제목 자간 */
+            letter-spacing: -1px;
         }
 
         .container p {
@@ -66,7 +91,7 @@
             color: #475569;
             max-width: 700px;
             margin-bottom: 36px;
-            letter-spacing: -0.4px; /* 본문 자간 */
+            letter-spacing: -0.4px;
         }
 
         /* 초대 버튼 */
@@ -95,7 +120,8 @@
     <nav class="navbar">
         <a href="#home">홈</a>
         <a href="#team">팀원</a>
-        <a href="https://discord.com/oauth2/authorize?client_id=1454357598252826829">
+        <a href="https://discord.com/oauth2/authorize?client_id=1454357598252826829"
+           target="_blank" rel="noopener noreferrer">
             초대하기
         </a>
     </nav>
@@ -108,11 +134,23 @@
     </p>
 
     <a class="invite-btn"
-       href="https://discord.com/oauth2/authorize?client_id=1454357598252826829">
+       href="https://discord.com/oauth2/authorize?client_id=1454357598252826829"
+       target="_blank" rel="noopener noreferrer">
         ShieldHub 초대하기
     </a>
 </main>
 
+<script>
+    // 우클릭 방지
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    // 개발자도구 단축키 방지
+    document.addEventListener("keydown", e => {
+        if (e.key === "F12") e.preventDefault();
+        if (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) e.preventDefault();
+        if (e.ctrlKey && e.key === "u") e.preventDefault();
+    });
+</script>
+
 </body>
 </html>
-
