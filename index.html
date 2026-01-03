@@ -238,8 +238,49 @@ document.addEventListener("keydown", e => {
 });
 </script>
 
+<!-- 모바일 팝업 -->
+<div class="mobile-popup" id="mobilePopup">
+    <div class="box">
+        <h2>안내</h2>
+        <p>
+            현재 페이지는<br>
+            <strong>PC와 모바일 화면이 서로 다르게</strong><br>
+            구성되어 있습니다.
+        </p>
+        <button onclick="closePopup()">확인</button>
+    </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+function toast(msg) {
+    const wrap = document.getElementById("toastWrap");
+    if (wrap.children.length >= 3) wrap.removeChild(wrap.firstChild);
+
+    const t = document.createElement("div");
+    t.className = "toast";
+    t.innerText = msg;
+    wrap.appendChild(t);
+
+    setTimeout(() => t.remove(), 3000);
+}
+
+// 모바일에서만 팝업 표시
+if (window.matchMedia("(max-width: 768px)").matches) {
+    window.addEventListener("load", () => {
+        document.getElementById("mobilePopup").style.display = "flex";
+    });
+}
+
+function closePopup() {
+    document.getElementById("mobilePopup").style.display = "none";
+}
+</script>
+
 </body>
 </html>
+
 
 
 
