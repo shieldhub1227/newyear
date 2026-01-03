@@ -6,40 +6,58 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0b1220;
+            font-family: "Pretendard", Arial, sans-serif;
+            background-color: #f4f8ff; /* 밝은 파랑 배경 */
+            color: #1f2937;
         }
 
         /* 헤더 영역 */
         header {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            padding-top: 20px;
         }
 
-        /* 네비게이션 바 */
+        /* 헤더바 */
         .navbar {
-            background-color: #0f1e3a; /* 딥 블루 */
-            border-radius: 30px;
-            padding: 14px 36px;
+            background-color: #ffffff; /* 밝은 흰+블루 느낌 */
+            border-radius: 32px;
+            padding: 14px 40px;
             display: flex;
-            gap: 34px;
-            box-shadow: 0 6px 18px rgba(20, 80, 200, 0.35);
+            gap: 36px;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
         }
 
-        /* 메뉴 텍스트 */
         .navbar a {
-            color: #e6efff;
             text-decoration: none;
+            color: #2563eb; /* 메인 블루 */
             font-size: 15px;
             font-weight: 600;
-            letter-spacing: 0.3px;
-            transition: color 0.2s ease, transform 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .navbar a:hover {
-            color: #4da3ff;
+            color: #1d4ed8;
             transform: translateY(-1px);
+        }
+
+        /* 메인 컨텐츠 */
+        .container {
+            max-width: 900px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 36px;
+            color: #1e40af;
+        }
+
+        .container p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #475569;
         }
     </style>
 </head>
@@ -52,6 +70,14 @@
         <a href="#invite">초대하기</a>
     </nav>
 </header>
+
+<main class="container">
+    <h1>우리 프로젝트를 소개합니다</h1>
+    <p>
+        이 사이트는 프로젝트의 목적, 팀원 구성, 그리고 새로운 멤버를
+        초대하기 위해 만들어졌습니다.
+    </p>
+</main>
 
 </body>
 </html>
