@@ -5,6 +5,9 @@
     <title>ShieldHub</title>
 
     <style>
+        /* =========================
+           🔤 SB 어그로 폰트 로드
+           ========================= */
         @font-face {
             font-family: "SB Aggro";
             src: url("SB 어그로 M.woff2") format("woff2");
@@ -12,31 +15,16 @@
             font-style: normal;
         }
 
-/* =========================
-   기본 스타일
-   ========================= */
+        /* =========================
+           기본 스타일
+           ========================= */
         body {
             margin: 0;
             font-family: "SB Aggro", sans-serif;
             background-color: #f4f8ff;
             color: #1f2937;
 
-            -webkit-user-select: none;
-            user-select: none;
-        }
-    </style>
-
-
-        /* =========================
-           기본 스타일
-           ========================= */
-        body {
-            margin: 0;
-            font-family: "Pretendard", Arial, sans-serif;
-            background-color: #f4f8ff;
-            color: #1f2937;
-
-            /* 텍스트 선택 방지 (선택) */
+            /* 텍스트 선택 방지 (선택사항) */
             -webkit-user-select: none;
             user-select: none;
         }
@@ -47,6 +35,7 @@
             padding-top: 20px;
         }
 
+        /* 헤더바 */
         .navbar {
             background-color: #ffffff;
             border-radius: 32px;
@@ -61,7 +50,7 @@
             color: #2563eb;
             font-size: 15px;
             font-weight: 600;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.4px;
             transition: all 0.2s ease;
         }
 
@@ -87,7 +76,7 @@
             font-weight: 700;
             color: #1e40af;
             margin-bottom: 20px;
-            letter-spacing: -1px;
+            letter-spacing: -1.2px;
         }
 
         .container p {
@@ -96,7 +85,7 @@
             color: #475569;
             max-width: 700px;
             margin-bottom: 36px;
-            letter-spacing: -0.4px;
+            letter-spacing: -0.5px;
         }
 
         /* 초대 버튼 */
@@ -108,7 +97,7 @@
             border-radius: 999px;
             font-size: 16px;
             font-weight: 600;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.4px;
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
             transition: all 0.2s ease;
         }
@@ -156,10 +145,6 @@
         if (e.ctrlKey && e.key === "u") e.preventDefault();
     });
 </script>
-    
 
 </body>
 </html>
-
-
-
