@@ -6,28 +6,24 @@
 
     <style>
         /* =========================
-           🔤 폰트 정의
+           🔤 폰트
            ========================= */
         @font-face {
-            font-family: "SB-Aggro-L";
-            src: url("SB 어그로 L.woff2") format("woff2");
-            font-weight: normal;
-            font-style: normal;
+            font-family: "SB-Aggro";
+            src: url("sb-aggro-l.woff2") format("woff2");
+            font-weight: 300;
         }
 
         @font-face {
-            font-family: "SB-Aggro-M";
-            src: url("SB 어그로 M.woff2") format("woff2");
-            font-weight: normal;
-            font-style: normal;
+            font-family: "SB-Aggro";
+            src: url("sb-aggro-m.woff2") format("woff2");
+            font-weight: 500;
         }
 
-        /* =========================
-           기본 스타일
-           ========================= */
         body {
             margin: 0;
-            font-family: "SB-Aggro-L", Arial, sans-serif;
+            font-family: "SB-Aggro", Arial, sans-serif;
+            font-weight: 300;
             background-color: #f4f8ff;
             color: #1f2937;
         }
@@ -59,9 +55,9 @@
             text-decoration: none;
             color: #2563eb;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: -0.3px;
-            transition: all 0.2s ease;
+            transition: 0.2s;
         }
 
         .navbar a:hover {
@@ -83,7 +79,7 @@
         }
 
         .container h1 {
-            font-family: "SB-Aggro-M";
+            font-weight: 500;
             font-size: 44px;
             color: #1e40af;
             margin-bottom: 20px;
@@ -104,9 +100,6 @@
             animation-delay: 0.2s;
         }
 
-        /* =========================
-           버튼
-           ========================= */
         .invite-btn {
             background-color: #2563eb;
             color: #ffffff;
@@ -114,9 +107,9 @@
             padding: 16px 40px;
             border-radius: 999px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 500;
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
-            transition: all 0.2s ease;
+            transition: 0.2s;
             opacity: 0;
             animation: fadeUp 1.2s ease forwards;
             animation-delay: 0.4s;
@@ -128,12 +121,19 @@
         }
 
         /* =========================
-           토스트 알림
+           토스트 알림 (좌측 하단)
            ========================= */
-        #dev-toast {
+        #toast-container {
             position: fixed;
             bottom: 24px;
-            right: 24px;
+            left: 24px;
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 10px;
+            z-index: 2000;
+        }
+
+        .toast {
             background-color: #1e40af;
             color: #ffffff;
             padding: 14px 22px;
@@ -141,20 +141,17 @@
             font-size: 14px;
             box-shadow: 0 8px 20px rgba(30, 64, 175, 0.35);
             opacity: 0;
-            pointer-events: none;
             transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 2000;
+            animation: toastIn 0.3s ease forwards;
         }
 
-        #dev-toast.show {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes toastIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* =========================
-           애니메이션
-           ========================= */
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -168,59 +165,13 @@
     </style>
 </head>
 <body>
-    <!-- Channel Plugin Scripts -->
-<script>
-  (function() {
- var w = window;
- if (w.ChannelIO) {
-   return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
- }
- var d = window.document;
- var ch = function() {
-   ch.c(arguments);
- };
- ch.q = [];
- ch.c = function(args) {
-   ch.q.push(args);
- };
- w.ChannelIO = ch;
- function l() {
-   if (w.ChannelIOInitialized) {
-     return;
-   }
-   w.ChannelIOInitialized = true;
-   var s = document.createElement('script');
-   s.type = 'text/javascript';
-   s.async = true;
-   s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
-   s.charset = 'UTF-8';
-   var x = document.getElementsByTagName('script')[0];
-   x.parentNode.insertBefore(s, x);
- }
- if (document.readyState === 'complete') {
-   l();
- } else if (window.attachEvent) {
-   window.attachEvent('onload', l);
- } else {
-   window.addEventListener('DOMContentLoaded', l, false);
-   window.addEventListener('load', l, false);
- }
-  })();
-  ChannelIO('boot', {
- "pluginKey": "048127a3-ed70-4535-9a24-1fbb571bd585"
-  });
-</script>
-<!-- End Channel Plugin -->
 
 <header>
     <nav class="navbar">
         <a href="#">홈</a>
         <a href="#" id="team-link">팀원</a>
-        <a href="https://discord.gg/c2brT46E2M" target="_blank" rel="noopener noreferrer">
-            커뮤니티
-        </a>
-        <a href="https://discord.com/oauth2/authorize?client_id=1454357598252826829"
-           target="_blank" rel="noopener noreferrer">
+        <a href="https://discord.gg/c2brT46E2M" target="_blank">커뮤니티</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1454357598252826829" target="_blank">
             초대하기
         </a>
     </nav>
@@ -228,34 +179,39 @@
 
 <main class="container">
     <h1>여러분의 서버지킴이, ShieldHub</h1>
-    <p>
-        아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!
-    </p>
+    <p>아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!</p>
 
     <a class="invite-btn"
        href="https://discord.com/oauth2/authorize?client_id=1454357598252826829"
-       target="_blank" rel="noopener noreferrer">
+       target="_blank">
         ShieldHub 초대하기
     </a>
 </main>
 
-<div id="dev-toast">알림</div>
+<div id="toast-container"></div>
 
 <script>
-    const toast = document.getElementById("dev-toast");
-    let toastTimeout;
+    const toastContainer = document.getElementById("toast-container");
+    const MAX_TOASTS = 3;
 
     function showToast(message) {
+        const toast = document.createElement("div");
+        toast.className = "toast";
         toast.textContent = message;
-        toast.classList.add("show");
 
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => {
-            toast.classList.remove("show");
+        toastContainer.appendChild(toast);
+
+        if (toastContainer.children.length > MAX_TOASTS) {
+            toastContainer.removeChild(toastContainer.children[0]);
+        }
+
+        setTimeout(() => {
+            toast.style.opacity = "0";
+            toast.style.transform = "translateY(10px)";
+            setTimeout(() => toast.remove(), 300);
         }, 2500);
     }
 
-    /* 개발자도구 / 우클릭 */
     document.addEventListener("contextmenu", e => {
         e.preventDefault();
         showToast("⚠️ 우클릭은 제한되어 있습니다.");
@@ -272,14 +228,52 @@
         }
     });
 
-    /* 팀원 클릭 */
     document.getElementById("team-link").addEventListener("click", e => {
         e.preventDefault();
-        showToast("🚧 팀원 소개는 아직 제작중입니다.");
+        showToast("🚧 팀 기능은 아직 개발중입니다.");
     });
+</script>
+
+<!-- =========================
+     Channel Plugin
+     ========================= -->
+<script>
+(function() {
+ var w = window;
+ if (w.ChannelIO) {
+   return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+ }
+ var d = window.document;
+ var ch = function() { ch.c(arguments); };
+ ch.q = [];
+ ch.c = function(args) { ch.q.push(args); };
+ w.ChannelIO = ch;
+
+ function l() {
+   if (w.ChannelIOInitialized) return;
+   w.ChannelIOInitialized = true;
+   var s = document.createElement('script');
+   s.type = 'text/javascript';
+   s.async = true;
+   s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+   s.charset = 'UTF-8';
+   var x = document.getElementsByTagName('script')[0];
+   x.parentNode.insertBefore(s, x);
+ }
+
+ if (document.readyState === 'complete') {
+   l();
+ } else if (window.attachEvent) {
+   window.attachEvent('onload', l);
+ } else {
+   window.addEventListener('DOMContentLoaded', l, false);
+   window.addEventListener('load', l, false);
+ }
+})();
+ChannelIO('boot', {
+  pluginKey: '048127a3-ed70-4535-9a24-1fbb571bd585'
+});
 </script>
 
 </body>
 </html>
-
-
