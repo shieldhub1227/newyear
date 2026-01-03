@@ -1,227 +1,210 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>ShieldHub</title>
+<meta charset="UTF-8">
+<title>ShieldHub</title>
 
-    <style>
-        /* =========================
-           🔤 SB 어그로체 (타이틀용)
-           ========================= */
-        @font-face {
-            font-family: "SBAggro";
-            src: url("./SB 어그로 L.woff2") format("woff2");
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
+<style>
+/* =========================
+   🔤 폰트
+========================= */
+@font-face {
+    font-family: "SBAggro";
+    src: url("./SB 어그로 L.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+}
 
-        /* =========================
-           🔤 Pretendard (기본 폰트)
-           ========================= */
-        @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
-            font-weight: 400;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
-            font-weight: 500;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
-            font-weight: 600;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-display: swap;
-        }
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
 
-        /* =========================
-           기본 설정
-           ========================= */
-        body {
-            margin: 0;
-            font-family: "Pretendard", sans-serif;
-            background-color: #f4f8ff;
-            color: #1f2937;
-        }
+/* =========================
+   기본 설정
+========================= */
+body {
+    margin: 0;
+    font-family: "Pretendard", sans-serif;
+    background-color: #f4f8ff;
+    color: #1f2937;
+}
 
-        /* =========================
-           헤더바 (고정)
-           ========================= */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 18px 0;
-            z-index: 1000;
-            background: transparent;
-        }
+/* =========================
+   헤더바 (고정)
+========================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    z-index: 1000;
+}
 
-        .navbar {
-            background-color: #ffffff;
-            border-radius: 40px;
-            padding: 20px 52px;
-            display: flex;
-            gap: 44px;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.18);
-        }
+.navbar {
+    background: #fff;
+    border-radius: 40px;
+    padding: 20px 56px;
+    display: flex;
+    gap: 48px;
+    box-shadow: 0 10px 30px rgba(59,130,246,0.18);
+}
 
-        /* 🔥 헤더 글자 크기 키운 부분 */
-        .navbar a {
-            text-decoration: none;
-            color: #2563eb;
-            font-size: 18px;          /* ← 기존 16px */
-            font-weight: 600;
-            letter-spacing: -0.3px;
-            transition: 0.2s;
-        }
+.navbar a {
+    text-decoration: none;
+    color: #2563eb;
+    font-size: 18px;
+    font-weight: 600;
+    transition: .2s;
+}
 
-        .navbar a:hover {
-            color: #1d4ed8;
-        }
+.navbar a:hover {
+    color: #1d4ed8;
+}
 
-        /* =========================
-           메인 영역
-           ========================= */
-        .container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
+/* =========================
+   메인 영역
+========================= */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
 
-        /* 타이틀만 어그로체 */
-        .container h1 {
-            font-family: "SBAggro", sans-serif;
-            font-size: 46px;
-            font-weight: 700;
-            color: #1e40af;
-            margin-bottom: 24px;
-            animation: fadeUp 1.2s ease forwards;
-        }
+.container h1 {
+    font-family: "SBAggro", sans-serif;
+    font-size: 46px;
+    color: #1e40af;
+    margin-bottom: 24px;
+    animation: fadeUp 1.2s forwards;
+}
 
-        .container p {
-            font-size: 20px;
-            line-height: 1.8;
-            color: #475569;
-            max-width: 700px;
-            margin-bottom: 40px;
-            animation: fadeUp 1.6s ease forwards;
-        }
+.container p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #475569;
+    max-width: 700px;
+    margin-bottom: 40px;
+    animation: fadeUp 1.6s forwards;
+}
 
-        .invite-btn {
-            background-color: #2563eb;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 16px 40px;
-            border-radius: 999px;
-            font-size: 16px;
-            font-weight: 600;
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
-            transition: 0.2s;
-            animation: fadeUp 2s ease forwards;
-        }
+.invite-btn {
+    background: #2563eb;
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 42px;
+    border-radius: 999px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(37,99,235,.35);
+    animation: fadeUp 2s forwards;
+}
 
-        .invite-btn:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-2px);
-        }
+.invite-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
 
-        /* =========================
-           애니메이션
-           ========================= */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+/* =========================
+   알림 (좌측)
+========================= */
+.toast-wrap {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2000;
+}
+
+.toast {
+    background: #111827;
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    animation: slideUp .3s ease;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   애니메이션
+========================= */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
+
 <body>
-    <!-- Channel Plugin Scripts -->
-<script>
-  (function() {
- var w = window;
- if (w.ChannelIO) {
-   return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
- }
- var d = window.document;
- var ch = function() {
-   ch.c(arguments);
- };
- ch.q = [];
- ch.c = function(args) {
-   ch.q.push(args);
- };
- w.ChannelIO = ch;
- function l() {
-   if (w.ChannelIOInitialized) {
-     return;
-   }
-   w.ChannelIOInitialized = true;
-   var s = document.createElement('script');
-   s.type = 'text/javascript';
-   s.async = true;
-   s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
-   s.charset = 'UTF-8';
-   var x = document.getElementsByTagName('script')[0];
-   x.parentNode.insertBefore(s, x);
- }
- if (document.readyState === 'complete') {
-   l();
- } else if (window.attachEvent) {
-   window.attachEvent('onload', l);
- } else {
-   window.addEventListener('DOMContentLoaded', l, false);
-   window.addEventListener('load', l, false);
- }
-  })();
-  ChannelIO('boot', {
- "pluginKey": "048127a3-ed70-4535-9a24-1fbb571bd585"
-  });
-</script>
-<!-- End Channel Plugin -->
 
 <header>
-    <nav class="navbar">
-        <a href="#">홈</a>
-        <a href="#" onclick="alert('🚧 아직 개발중입니다!')">팀</a>
-        <a href="https://discord.gg/c2brT46E2M" target="_blank">커뮤니티</a>
-    </nav>
+<nav class="navbar">
+    <a href="#">홈</a>
+    <a href="#" onclick="toast('🚧 아직 개발중입니다')">팀</a>
+    <a href="https://discord.gg/c2brT46E2M" target="_blank">커뮤니티</a>
+    <a href="https://discord.com/oauth2/authorize?client_id=1454357598252826829" target="_blank">초대하기</a>
+</nav>
 </header>
 
 <main class="container">
-    <h1>여러분의 서버지킴이, ShieldHub</h1>
-    <p>
-        아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!
-    </p>
+<h1>여러분의 서버지킴이, ShieldHub</h1>
+<p>아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!</p>
 
-    <a class="invite-btn"
-       href="https://discord.com/oauth2/authorize?client_id=1454357598252826829"
-       target="_blank">
-        ShieldHub 초대하기
-    </a>
+<a class="invite-btn"
+   href="https://discord.com/oauth2/authorize?client_id=1454357598252826829"
+   target="_blank">
+   ShieldHub 초대하기
+</a>
 </main>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+/* =========================
+   알림 로직 (최대 3개)
+========================= */
+function toast(msg) {
+    const wrap = document.getElementById("toastWrap");
+    if (wrap.children.length >= 3) {
+        wrap.removeChild(wrap.firstChild);
+    }
+
+    const t = document.createElement("div");
+    t.className = "toast";
+    t.innerText = msg;
+    wrap.appendChild(t);
+
+    setTimeout(() => t.remove(), 3000);
+}
+
+/* =========================
+   개발자도구 감지
+========================= */
+document.addEventListener("keydown", e => {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key)) ||
+        (e.ctrlKey && e.key === "u")
+    ) {
+        e.preventDefault();
+        toast("⚠ 개발자 도구는 사용할 수 없습니다");
+    }
+});
+</script>
 
 </body>
 </html>
-
