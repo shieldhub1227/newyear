@@ -28,7 +28,7 @@ body {
 }
 
 /* =========================
-   헤더바 (PC 기준 그대로)
+   헤더바 (PC 기준)
 ========================= */
 header {
     position: fixed;
@@ -62,7 +62,7 @@ header {
 }
 
 /* =========================
-   메인 영역 (PC 기준 그대로)
+   메인 영역 (PC 기준)
 ========================= */
 .container {
     min-height: 100vh;
@@ -79,7 +79,6 @@ header {
     font-size: 46px;
     color: #1e40af;
     margin-bottom: 24px;
-    animation: fadeUp 1.2s forwards;
 }
 
 .container p {
@@ -88,7 +87,6 @@ header {
     color: #475569;
     max-width: 700px;
     margin-bottom: 40px;
-    animation: fadeUp 1.6s forwards;
 }
 
 .invite-btn {
@@ -99,7 +97,6 @@ header {
     border-radius: 999px;
     font-weight: 600;
     box-shadow: 0 10px 25px rgba(37,99,235,.35);
-    animation: fadeUp 2s forwards;
 }
 
 .invite-btn:hover {
@@ -126,21 +123,10 @@ header {
     padding: 14px 18px;
     border-radius: 12px;
     font-size: 14px;
-    animation: slideUp .3s ease;
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================
-   📱 모바일 전용 (PC 영향 ❌)
+   📱 모바일 전용 (PC 영향 없음)
 ========================= */
 @media (max-width: 768px) {
 
@@ -158,8 +144,10 @@ header {
         font-size: 14px;
     }
 
+    /* ⭐ 핵심 수정 부분 */
     .container {
-        padding-top: 120px; /* 헤더 겹침 방지 */
+        justify-content: flex-start;
+        padding-top: 90px;
     }
 
     .container h1 {
@@ -187,25 +175,6 @@ header {
 </head>
 
 <body id="home">
-
-<!-- ChannelIO -->
-<script>
-(function(){var w=window;if(w.ChannelIO){return;}
-var ch=function(){ch.c(arguments);};ch.q=[];
-ch.c=function(args){ch.q.push(args);};
-w.ChannelIO=ch;
-function l(){if(w.ChannelIOInitialized){return;}
-w.ChannelIOInitialized=true;
-var s=document.createElement("script");
-s.type="text/javascript";s.async=true;
-s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";
-var x=document.getElementsByTagName("script")[0];
-if(x.parentNode){x.parentNode.insertBefore(s,x);}}
-if(document.readyState==="complete"){l();}
-else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}
-})();
-ChannelIO('boot',{pluginKey:"048127a3-ed70-4535-9a24-1fbb571bd585"});
-</script>
 
 <header>
 <nav class="navbar">
@@ -241,17 +210,6 @@ function toast(msg) {
 
     setTimeout(() => t.remove(), 3000);
 }
-
-document.addEventListener("keydown", e => {
-    if (
-        e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key)) ||
-        (e.ctrlKey && e.key === "u")
-    ) {
-        e.preventDefault();
-        toast("⚠ 개발자 도구는 사용할 수 없습니다");
-    }
-});
 </script>
 
 </body>
