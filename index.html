@@ -6,26 +6,19 @@
 
     <style>
         /* =========================
-           Pretendard (전체 기본 폰트)
+           🔤 SB 어그로체 (타이틀용)
            ========================= */
         @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
-            font-weight: 100;
+            font-family: "SBAggro";
+            src: url("./SB 어그로 L.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
             font-display: swap;
         }
-        @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
-            font-weight: 200;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
-            font-weight: 300;
-            font-display: swap;
-        }
+
+        /* =========================
+           🔤 Pretendard (기본 폰트)
+           ========================= */
         @font-face {
             font-family: 'Pretendard';
             src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
@@ -50,40 +43,19 @@
             font-weight: 700;
             font-display: swap;
         }
-        @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
-            font-weight: 800;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Pretendard';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
-            font-weight: 900;
-            font-display: swap;
-        }
 
         /* =========================
-           SB 어그로 (제목 전용)
-           ========================= */
-        @font-face {
-            font-family: "SB-Aggro-M";
-            src: url("sb-aggro-m.woff2") format("woff2");
-            font-display: swap;
-        }
-
-        /* =========================
-           기본 스타일
+           기본 설정
            ========================= */
         body {
             margin: 0;
-            font-family: 'Pretendard', Arial, sans-serif;
+            font-family: "Pretendard", sans-serif;
             background-color: #f4f8ff;
             color: #1f2937;
         }
 
         /* =========================
-           헤더바
+           헤더바 (고정)
            ========================= */
         header {
             position: fixed;
@@ -91,24 +63,25 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 24px 0;
+            padding: 18px 0;
             z-index: 1000;
+            background: transparent;
         }
 
         .navbar {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 36px;
-            padding: 18px 48px;
+            background-color: #ffffff;
+            border-radius: 40px;
+            padding: 20px 52px;
             display: flex;
-            gap: 42px;
-            box-shadow: 0 10px 24px rgba(59, 130, 246, 0.18);
-            backdrop-filter: blur(8px);
+            gap: 44px;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.18);
         }
 
+        /* 🔥 헤더 글자 크기 키운 부분 */
         .navbar a {
             text-decoration: none;
             color: #2563eb;
-            font-size: 15px;
+            font-size: 18px;          /* ← 기존 16px */
             font-weight: 600;
             letter-spacing: -0.3px;
             transition: 0.2s;
@@ -116,7 +89,6 @@
 
         .navbar a:hover {
             color: #1d4ed8;
-            transform: translateY(-1px);
         }
 
         /* =========================
@@ -132,14 +104,13 @@
             padding: 0 20px;
         }
 
-        /* 👉 이 h1만 SB 어그로 M */
+        /* 타이틀만 어그로체 */
         .container h1 {
-            font-family: "SB-Aggro-M", sans-serif;
-            font-size: 44px;
+            font-family: "SBAggro", sans-serif;
+            font-size: 46px;
+            font-weight: 700;
             color: #1e40af;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-            opacity: 0;
+            margin-bottom: 24px;
             animation: fadeUp 1.2s ease forwards;
         }
 
@@ -148,12 +119,8 @@
             line-height: 1.8;
             color: #475569;
             max-width: 700px;
-            margin-bottom: 36px;
-            letter-spacing: -0.4px;
-            font-weight: 400;
-            opacity: 0;
-            animation: fadeUp 1.2s ease forwards;
-            animation-delay: 0.2s;
+            margin-bottom: 40px;
+            animation: fadeUp 1.6s ease forwards;
         }
 
         .invite-btn {
@@ -164,11 +131,9 @@
             border-radius: 999px;
             font-size: 16px;
             font-weight: 600;
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
             transition: 0.2s;
-            opacity: 0;
-            animation: fadeUp 1.2s ease forwards;
-            animation-delay: 0.4s;
+            animation: fadeUp 2s ease forwards;
         }
 
         .invite-btn:hover {
@@ -177,38 +142,17 @@
         }
 
         /* =========================
-           토스트 알림 (좌측)
+           애니메이션
            ========================= */
-        #toast-container {
-            position: fixed;
-            bottom: 24px;
-            left: 24px;
-            display: flex;
-            flex-direction: column-reverse;
-            gap: 10px;
-            z-index: 2000;
-        }
-
-        .toast {
-            background-color: #1e40af;
-            color: #ffffff;
-            padding: 14px 22px;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.35);
-            opacity: 0;
-            transform: translateY(10px);
-            animation: toastIn 0.3s ease forwards;
-        }
-
-        @keyframes toastIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(14px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -217,17 +161,16 @@
 <header>
     <nav class="navbar">
         <a href="#">홈</a>
-        <a href="#" id="team-link">팀원</a>
+        <a href="#" onclick="alert('🚧 아직 개발중입니다!')">팀</a>
         <a href="https://discord.gg/c2brT46E2M" target="_blank">커뮤니티</a>
-        <a href="https://discord.com/oauth2/authorize?client_id=1454357598252826829" target="_blank">
-            초대하기
-        </a>
     </nav>
 </header>
 
 <main class="container">
     <h1>여러분의 서버지킴이, ShieldHub</h1>
-    <p>아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!</p>
+    <p>
+        아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!
+    </p>
 
     <a class="invite-btn"
        href="https://discord.com/oauth2/authorize?client_id=1454357598252826829"
@@ -235,76 +178,6 @@
         ShieldHub 초대하기
     </a>
 </main>
-
-<div id="toast-container"></div>
-
-<script>
-    const toastContainer = document.getElementById("toast-container");
-    const MAX_TOASTS = 3;
-
-    function showToast(message) {
-        const toast = document.createElement("div");
-        toast.className = "toast";
-        toast.textContent = message;
-
-        toastContainer.appendChild(toast);
-        if (toastContainer.children.length > MAX_TOASTS) {
-            toastContainer.removeChild(toastContainer.children[0]);
-        }
-
-        setTimeout(() => {
-            toast.style.opacity = "0";
-            setTimeout(() => toast.remove(), 300);
-        }, 2500);
-    }
-
-    document.addEventListener("contextmenu", e => {
-        e.preventDefault();
-        showToast("⚠️ 우클릭은 제한되어 있습니다.");
-    });
-
-    document.addEventListener("keydown", e => {
-        if (
-            e.key === "F12" ||
-            (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
-            (e.ctrlKey && e.key === "u")
-        ) {
-            e.preventDefault();
-            showToast("⚠️ 개발자 도구 사용은 제한되어 있습니다.");
-        }
-    });
-
-    document.getElementById("team-link").addEventListener("click", e => {
-        e.preventDefault();
-        showToast("🚧 팀 기능은 아직 개발중입니다.");
-    });
-</script>
-
-<!-- Channel Plugin -->
-<script>
-(function() {
- var w = window;
- if (w.ChannelIO) return;
- var ch = function() { ch.c(arguments); };
- ch.q = [];
- ch.c = function(args) { ch.q.push(args); };
- w.ChannelIO = ch;
-
- function l() {
-   if (w.ChannelIOInitialized) return;
-   w.ChannelIOInitialized = true;
-   var s = document.createElement('script');
-   s.async = true;
-   s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
-   var x = document.getElementsByTagName('script')[0];
-   x.parentNode.insertBefore(s, x);
- }
- window.addEventListener('load', l);
-})();
-ChannelIO('boot', {
-  pluginKey: '048127a3-ed70-4535-9a24-1fbb571bd585'
-});
-</script>
 
 </body>
 </html>
