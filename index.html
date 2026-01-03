@@ -28,9 +28,10 @@
 
         .navbar a {
             text-decoration: none;
-            color: #2563eb; /* 메인 블루 */
+            color: #2563eb;
             font-size: 15px;
             font-weight: 600;
+            letter-spacing: -0.3px; /* 자간 줄임 */
             transition: all 0.2s ease;
         }
 
@@ -39,23 +40,52 @@
             transform: translateY(-1px);
         }
 
-        /* 메인 컨텐츠 */
+        /* 메인 영역 */
         .container {
-            max-width: 900px;
-            margin: 80px auto 0;
-            padding: 0 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            margin-top: -70px;
+            padding: 0 20px;
         }
 
         .container h1 {
-            font-size: 36px;
+            font-size: 44px;
+            font-weight: 700;
             color: #1e40af;
+            margin-bottom: 20px;
+            letter-spacing: -1px; /* 제목 자간 */
         }
 
         .container p {
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 20px;
+            line-height: 1.8;
             color: #475569;
+            max-width: 700px;
+            margin-bottom: 36px;
+            letter-spacing: -0.4px; /* 본문 자간 */
+        }
+
+        /* 초대 버튼 */
+        .invite-btn {
+            background-color: #2563eb;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 36px;
+            border-radius: 999px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .invite-btn:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -65,7 +95,9 @@
     <nav class="navbar">
         <a href="#home">홈</a>
         <a href="#team">팀원</a>
-        <a href="#invite">초대하기</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1454357598252826829">
+            초대하기
+        </a>
     </nav>
 </header>
 
@@ -74,44 +106,12 @@
     <p>
         아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!
     </p>
+
+    <a class="invite-btn"
+       href="https://discord.com/oauth2/authorize?client_id=1454357598252826829">
+        ShieldHub 초대하기
+    </a>
 </main>
-
-<style>
-    .container {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-
-        padding-top: 0;          /* 기존 60px 제거 */
-        margin-top: -70px;       /* 위로 살짝 당기기 */
-    }
-
-
-    .container h1 {
-        font-size: 44px;
-        font-weight: 700;
-        color: #1e40af;
-        margin-bottom: 24px;
-    }
-
-    .container p {
-        font-size: 20px;
-        line-height: 1.8;
-        color: #475569;
-        max-width: 700px;
-    }
-</style>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
