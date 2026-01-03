@@ -9,7 +9,7 @@
            🔤 SB 어그로 폰트 로드
            ========================= */
 
-        /* SB 어그로 L (기본 텍스트) */
+        /* SB 어그로 L (기본) */
         @font-face {
             font-family: "SB Aggro";
             src: url("SB 어그로 L.woff2") format("woff2");
@@ -17,7 +17,7 @@
             font-style: normal;
         }
 
-        /* SB 어그로 M (제목용) */
+        /* SB 어그로 M (제목) */
         @font-face {
             font-family: "SB Aggro";
             src: url("SB 어그로 M.woff2") format("woff2");
@@ -31,32 +31,36 @@
         body {
             margin: 0;
             font-family: "SB Aggro", sans-serif;
-            font-weight: 400; /* L */
+            font-weight: 400;
             background-color: #f4f8ff;
             color: #1f2937;
         }
 
+        /* =========================
+           헤더 (스크롤 고정)
+           ========================= */
         header {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
             display: flex;
             justify-content: center;
-            padding-top: 20px;
         }
 
-        /* 헤더바 */
         .navbar {
             background-color: #ffffff;
             border-radius: 36px;
-            padding: 18px 52px;            /* 여유 증가 */
+            padding: 18px 52px;
             display: flex;
-            gap: 44px;                     /* 메뉴 간격 증가 */
+            gap: 44px;
             box-shadow: 0 10px 24px rgba(59, 130, 246, 0.16);
         }
 
         .navbar a {
             text-decoration: none;
             color: #2563eb;
-            font-size: 16px;               /* 살짝 키움 */
-            font-weight: 400;              /* L */
+            font-size: 16px;
+            font-weight: 400;
             letter-spacing: -0.35px;
             transition: all 0.2s ease;
         }
@@ -66,7 +70,9 @@
             transform: translateY(-1px);
         }
 
-        /* 메인 영역 */
+        /* =========================
+           메인 영역
+           ========================= */
         .container {
             min-height: 100vh;
             display: flex;
@@ -78,15 +84,39 @@
             padding: 0 20px;
         }
 
-        /* 제목 (SB 어그로 M) */
+        /* =========================
+           등장 애니메이션
+           ========================= */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.5s; }
+
+        /* 제목 */
         .container h1 {
             font-size: 44px;
-            font-weight: 700; /* M */
+            font-weight: 700;
             color: #1e40af;
             margin-bottom: 20px;
             letter-spacing: -1.2px;
         }
 
+        /* 설명 */
         .container p {
             font-size: 20px;
             line-height: 1.8;
@@ -94,10 +124,9 @@
             max-width: 700px;
             margin-bottom: 36px;
             letter-spacing: -0.5px;
-            font-weight: 400; /* L */
         }
 
-        /* 초대 버튼 */
+        /* 버튼 */
         .invite-btn {
             background-color: #2563eb;
             color: #ffffff;
@@ -117,7 +146,7 @@
         }
 
         /* =========================
-           우측 하단 알림 (Toast)
+           우측 하단 알림
            ========================= */
         .toast {
             position: fixed;
@@ -156,19 +185,18 @@
 </header>
 
 <main class="container">
-    <h1>여러분의 서버지킴이, ShieldHub</h1>
-    <p>
+    <h1 class="fade-up delay-1">여러분의 서버지킴이, ShieldHub</h1>
+    <p class="fade-up delay-2">
         아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!
     </p>
 
-    <a class="invite-btn"
+    <a class="invite-btn fade-up delay-3"
        href="https://discord.com/oauth2/authorize?client_id=1454357598252826829"
        target="_blank" rel="noopener noreferrer">
         ShieldHub 초대하기
     </a>
 </main>
 
-<!-- 우측 하단 알림 -->
 <div id="dev-toast" class="toast">
     ⚠️ 개발자 도구 사용은 제한되어 있습니다.
 </div>
@@ -188,13 +216,11 @@
         }, 2500);
     }
 
-    // 우클릭 방지 + 알림
     document.addEventListener("contextmenu", e => {
         e.preventDefault();
         showToast();
     });
 
-    // 개발자도구 단축키 감지
     document.addEventListener("keydown", e => {
         if (
             e.key === "F12" ||
