@@ -125,10 +125,15 @@ header {
     font-size: 14px;
 }
 
+
 /* =========================
-   📱 모바일 전용 (PC 영향 없음)
+   📱 모바일 전용 수정
 ========================= */
 @media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
 
     header {
         padding: 12px 0;
@@ -144,10 +149,12 @@ header {
         font-size: 14px;
     }
 
-    /* ⭐ 핵심 수정 부분 */
     .container {
+        min-height: auto;
+        height: calc(100vh - 90px);
         justify-content: flex-start;
         padding-top: 90px;
+        padding-bottom: 0;
     }
 
     .container h1 {
@@ -222,4 +229,5 @@ function toast(msg) {
 
 </body>
 </html>
+
 
