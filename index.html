@@ -9,7 +9,7 @@
            🔤 SB 어그로 폰트 로드
            ========================= */
 
-        /* SB 어그로 S (기본) */
+        /* SB 어그로 L (기본 텍스트) */
         @font-face {
             font-family: "SB Aggro";
             src: url("SB 어그로 L.woff2") format("woff2");
@@ -31,12 +31,9 @@
         body {
             margin: 0;
             font-family: "SB Aggro", sans-serif;
-            font-weight: 400; /* 기본 = S */
+            font-weight: 400; /* L */
             background-color: #f4f8ff;
             color: #1f2937;
-
-            -webkit-user-select: none;
-            user-select: none;
         }
 
         header {
@@ -48,19 +45,19 @@
         /* 헤더바 */
         .navbar {
             background-color: #ffffff;
-            border-radius: 32px;
-            padding: 14px 40px;
+            border-radius: 36px;
+            padding: 18px 52px;            /* 여유 증가 */
             display: flex;
-            gap: 36px;
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+            gap: 44px;                     /* 메뉴 간격 증가 */
+            box-shadow: 0 10px 24px rgba(59, 130, 246, 0.16);
         }
 
         .navbar a {
             text-decoration: none;
             color: #2563eb;
-            font-size: 15px;
-            font-weight: 400; /* S */
-            letter-spacing: -0.4px;
+            font-size: 16px;               /* 살짝 키움 */
+            font-weight: 400;              /* L */
+            letter-spacing: -0.35px;
             transition: all 0.2s ease;
         }
 
@@ -81,7 +78,7 @@
             padding: 0 20px;
         }
 
-        /* 🔥 여기만 SB 어그로 M 적용 */
+        /* 제목 (SB 어그로 M) */
         .container h1 {
             font-size: 44px;
             font-weight: 700; /* M */
@@ -97,7 +94,7 @@
             max-width: 700px;
             margin-bottom: 36px;
             letter-spacing: -0.5px;
-            font-weight: 400; /* S */
+            font-weight: 400; /* L */
         }
 
         /* 초대 버튼 */
@@ -108,7 +105,7 @@
             padding: 14px 36px;
             border-radius: 999px;
             font-size: 16px;
-            font-weight: 400; /* S */
+            font-weight: 400;
             letter-spacing: -0.4px;
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
             transition: all 0.2s ease;
@@ -117,6 +114,31 @@
         .invite-btn:hover {
             background-color: #1d4ed8;
             transform: translateY(-2px);
+        }
+
+        /* =========================
+           우측 하단 알림 (Toast)
+           ========================= */
+        .toast {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            background-color: #1e40af;
+            color: #ffffff;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 14px;
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -146,16 +168,44 @@
     </a>
 </main>
 
-<script>
-    document.addEventListener("contextmenu", e => e.preventDefault());
+<!-- 우측 하단 알림 -->
+<div id="dev-toast" class="toast">
+    ⚠️ 개발자 도구 사용은 제한되어 있습니다.
+</div>
 
+<script>
+    const toast = document.getElementById("dev-toast");
+    let toastTimeout = null;
+
+    function showToast() {
+        if (toast.classList.contains("show")) return;
+
+        toast.classList.add("show");
+
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2500);
+    }
+
+    // 우클릭 방지 + 알림
+    document.addEventListener("contextmenu", e => {
+        e.preventDefault();
+        showToast();
+    });
+
+    // 개발자도구 단축키 감지
     document.addEventListener("keydown", e => {
-        if (e.key === "F12") e.preventDefault();
-        if (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) e.preventDefault();
-        if (e.ctrlKey && e.key === "u") e.preventDefault();
+        if (
+            e.key === "F12" ||
+            (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
+            (e.ctrlKey && e.key === "u")
+        ) {
+            e.preventDefault();
+            showToast();
+        }
     });
 </script>
 
 </body>
 </html>
-
