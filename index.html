@@ -6,30 +6,84 @@
 
     <style>
         /* =========================
-           🔤 폰트
+           Pretendard (전체 기본 폰트)
            ========================= */
         @font-face {
-            font-family: "SB-Aggro";
-            src: url("sb-aggro-l.woff2") format("woff2");
-            font-weight: 300;
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+            font-weight: 100;
+            font-display: swap;
         }
-
         @font-face {
-            font-family: "SB-Aggro";
-            src: url("sb-aggro-m.woff2") format("woff2");
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+            font-weight: 200;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+            font-weight: 300;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
             font-weight: 500;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+            font-weight: 800;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+            font-weight: 900;
+            font-display: swap;
         }
 
+        /* =========================
+           SB 어그로 (제목 전용)
+           ========================= */
+        @font-face {
+            font-family: "SB-Aggro-M";
+            src: url("sb-aggro-m.woff2") format("woff2");
+            font-display: swap;
+        }
+
+        /* =========================
+           기본 스타일
+           ========================= */
         body {
             margin: 0;
-            font-family: "SB-Aggro", Arial, sans-serif;
-            font-weight: 300;
+            font-family: 'Pretendard', Arial, sans-serif;
             background-color: #f4f8ff;
             color: #1f2937;
         }
 
         /* =========================
-           헤더바 (고정)
+           헤더바
            ========================= */
         header {
             position: fixed;
@@ -55,7 +109,7 @@
             text-decoration: none;
             color: #2563eb;
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: -0.3px;
             transition: 0.2s;
         }
@@ -78,8 +132,9 @@
             padding: 0 20px;
         }
 
+        /* 👉 이 h1만 SB 어그로 M */
         .container h1 {
-            font-weight: 500;
+            font-family: "SB-Aggro-M", sans-serif;
             font-size: 44px;
             color: #1e40af;
             margin-bottom: 20px;
@@ -95,6 +150,7 @@
             max-width: 700px;
             margin-bottom: 36px;
             letter-spacing: -0.4px;
+            font-weight: 400;
             opacity: 0;
             animation: fadeUp 1.2s ease forwards;
             animation-delay: 0.2s;
@@ -107,7 +163,7 @@
             padding: 16px 40px;
             border-radius: 999px;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
             transition: 0.2s;
             opacity: 0;
@@ -121,7 +177,7 @@
         }
 
         /* =========================
-           토스트 알림 (좌측 하단)
+           토스트 알림 (좌측)
            ========================= */
         #toast-container {
             position: fixed;
@@ -139,6 +195,7 @@
             padding: 14px 22px;
             border-radius: 14px;
             font-size: 14px;
+            font-weight: 500;
             box-shadow: 0 8px 20px rgba(30, 64, 175, 0.35);
             opacity: 0;
             transform: translateY(10px);
@@ -146,21 +203,12 @@
         }
 
         @keyframes toastIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(14px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -200,14 +248,12 @@
         toast.textContent = message;
 
         toastContainer.appendChild(toast);
-
         if (toastContainer.children.length > MAX_TOASTS) {
             toastContainer.removeChild(toastContainer.children[0]);
         }
 
         setTimeout(() => {
             toast.style.opacity = "0";
-            toast.style.transform = "translateY(10px)";
             setTimeout(() => toast.remove(), 300);
         }, 2500);
     }
@@ -234,16 +280,11 @@
     });
 </script>
 
-<!-- =========================
-     Channel Plugin
-     ========================= -->
+<!-- Channel Plugin -->
 <script>
 (function() {
  var w = window;
- if (w.ChannelIO) {
-   return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
- }
- var d = window.document;
+ if (w.ChannelIO) return;
  var ch = function() { ch.c(arguments); };
  ch.q = [];
  ch.c = function(args) { ch.q.push(args); };
@@ -253,22 +294,12 @@
    if (w.ChannelIOInitialized) return;
    w.ChannelIOInitialized = true;
    var s = document.createElement('script');
-   s.type = 'text/javascript';
    s.async = true;
    s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
-   s.charset = 'UTF-8';
    var x = document.getElementsByTagName('script')[0];
    x.parentNode.insertBefore(s, x);
  }
-
- if (document.readyState === 'complete') {
-   l();
- } else if (window.attachEvent) {
-   window.attachEvent('onload', l);
- } else {
-   window.addEventListener('DOMContentLoaded', l, false);
-   window.addEventListener('load', l, false);
- }
+ window.addEventListener('load', l);
 })();
 ChannelIO('boot', {
   pluginKey: '048127a3-ed70-4535-9a24-1fbb571bd585'
