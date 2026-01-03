@@ -5,9 +5,6 @@
 <title>ShieldHub</title>
 
 <style>
-/* =========================
-   🔤 폰트
-========================= */
 @font-face {
     font-family: "SBAggro";
     src: url("./SB 어그로 M.woff2") format("woff2");
@@ -22,9 +19,6 @@
     font-display: swap;
 }
 
-/* =========================
-   기본 설정
-========================= */
 body {
     margin: 0;
     font-family: "Pretendard", sans-serif;
@@ -66,9 +60,6 @@ header {
     color: #1d4ed8;
 }
 
-/* =========================
-   메인 영역
-========================= */
 .container {
     min-height: 100vh;
     display: flex;
@@ -112,9 +103,6 @@ header {
     transform: translateY(-2px);
 }
 
-/* =========================
-   알림 (좌측)
-========================= */
 .toast-wrap {
     position: fixed;
     bottom: 24px;
@@ -139,9 +127,6 @@ header {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* =========================
-   애니메이션
-========================= */
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -196,8 +181,8 @@ header {
 
 <header>
 <nav class="navbar">
-    <a href="#">홈</a>
-    <a href="#" onclick="toast('🚧 아직 팀원 소개는 제작중입니다')">팀</a>
+    <a href="home">홈</a>
+    <a href="team" onclick="toast('🚧 아직 팀원 소개는 제작중입니다')">팀원</a>
     <a href="https://discord.gg/c2brT46E2M" target="_blank">커뮤니티</a>
     <a href="https://discord.com/oauth2/authorize?client_id=1454357598252826829" target="_blank">초대하기</a>
 </nav>
@@ -217,9 +202,6 @@ header {
 <div class="toast-wrap" id="toastWrap"></div>
 
 <script>
-/* =========================
-   알림 로직 (최대 3개)
-========================= */
 function toast(msg) {
     const wrap = document.getElementById("toastWrap");
     if (wrap.children.length >= 3) {
@@ -234,9 +216,6 @@ function toast(msg) {
     setTimeout(() => t.remove(), 3000);
 }
 
-/* =========================
-   개발자도구 감지
-========================= */
 document.addEventListener("keydown", e => {
     if (
         e.key === "F12" ||
@@ -251,3 +230,4 @@ document.addEventListener("keydown", e => {
 
 </body>
 </html>
+
