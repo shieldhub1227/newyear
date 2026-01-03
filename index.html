@@ -6,9 +6,6 @@
 <title>ShieldHub</title>
 
 <style>
-/* =========================
-   폰트
-========================= */
 @font-face {
     font-family: "SBAggro";
     src: url("./SB 어그로 M.woff2") format("woff2");
@@ -17,15 +14,12 @@
 }
 
 @font-face {
-    font-family: "Pretendard";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2") format("woff2");
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
     font-weight: 400;
     font-display: swap;
 }
 
-/* =========================
-   기본
-========================= */
 body {
     margin: 0;
     font-family: "Pretendard", sans-serif;
@@ -34,7 +28,7 @@ body {
 }
 
 /* =========================
-   헤더바
+   헤더바 (PC 기준 그대로)
 ========================= */
 header {
     position: fixed;
@@ -42,16 +36,16 @@ header {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 16px 0;
+    padding: 20px 0;
     z-index: 1000;
 }
 
 .navbar {
     background: #fff;
     border-radius: 40px;
-    padding: 18px 48px;
+    padding: 20px 56px;
     display: flex;
-    gap: 40px;
+    gap: 48px;
     box-shadow: 0 10px 30px rgba(59,130,246,0.18);
 }
 
@@ -60,21 +54,24 @@ header {
     color: #2563eb;
     font-size: 18px;
     font-weight: 600;
+    transition: .2s;
+}
+
+.navbar a:hover {
+    color: #1d4ed8;
 }
 
 /* =========================
-   메인
+   메인 영역 (PC 기준 그대로)
 ========================= */
 .container {
     min-height: 100vh;
-    padding-top: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px;
 }
 
 .container h1 {
@@ -105,13 +102,18 @@ header {
     animation: fadeUp 2s forwards;
 }
 
+.invite-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
 /* =========================
-   토스트 알림
+   토스트
 ========================= */
 .toast-wrap {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    bottom: 24px;
+    left: 24px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -127,9 +129,6 @@ header {
     animation: slideUp .3s ease;
 }
 
-/* =========================
-   애니메이션
-========================= */
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -141,32 +140,47 @@ header {
 }
 
 /* =========================
-   📱 모바일 대응
+   📱 모바일 전용 (PC 영향 ❌)
 ========================= */
 @media (max-width: 768px) {
+
+    header {
+        padding: 12px 0;
+    }
+
     .navbar {
-        padding: 14px 24px;
+        padding: 14px 22px;
         gap: 20px;
-        border-radius: 28px;
+        border-radius: 26px;
     }
 
     .navbar a {
-        font-size: 15px;
+        font-size: 14px;
+    }
+
+    .container {
+        padding-top: 120px; /* 헤더 겹침 방지 */
     }
 
     .container h1 {
-        font-size: 32px;
+        font-size: 30px;
         line-height: 1.3;
     }
 
     .container p {
-        font-size: 16px;
+        font-size: 15px;
         line-height: 1.6;
+        margin-bottom: 28px;
     }
 
     .invite-btn {
         padding: 14px 28px;
         font-size: 15px;
+    }
+
+    .toast-wrap {
+        left: 16px;
+        bottom: 16px;
     }
 }
 </style>
@@ -174,12 +188,23 @@ header {
 
 <body id="home">
 
+<!-- ChannelIO -->
 <script>
-  (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
-
-  ChannelIO('boot', {
-    "pluginKey": "048127a3-ed70-4535-9a24-1fbb571bd585"
-  });
+(function(){var w=window;if(w.ChannelIO){return;}
+var ch=function(){ch.c(arguments);};ch.q=[];
+ch.c=function(args){ch.q.push(args);};
+w.ChannelIO=ch;
+function l(){if(w.ChannelIOInitialized){return;}
+w.ChannelIOInitialized=true;
+var s=document.createElement("script");
+s.type="text/javascript";s.async=true;
+s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";
+var x=document.getElementsByTagName("script")[0];
+if(x.parentNode){x.parentNode.insertBefore(s,x);}}
+if(document.readyState==="complete"){l();}
+else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}
+})();
+ChannelIO('boot',{pluginKey:"048127a3-ed70-4535-9a24-1fbb571bd585"});
 </script>
 
 <header>
