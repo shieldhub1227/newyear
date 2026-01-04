@@ -28,7 +28,7 @@ body {
 }
 
 /* =========================
-   헤더바 (PC 기준)
+   헤더바
 ========================= */
 header {
     position: fixed;
@@ -62,7 +62,7 @@ header {
 }
 
 /* =========================
-   메인 영역 (PC 기준)
+   메인 영역
 ========================= */
 .container {
     min-height: 100vh;
@@ -79,6 +79,8 @@ header {
     font-size: 46px;
     color: #1e40af;
     margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1.2s forwards;
 }
 
 .container p {
@@ -87,6 +89,8 @@ header {
     color: #475569;
     max-width: 700px;
     margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 1.6s forwards;
 }
 
 .invite-btn {
@@ -97,6 +101,8 @@ header {
     border-radius: 999px;
     font-weight: 600;
     box-shadow: 0 10px 25px rgba(37,99,235,.35);
+    opacity: 0;
+    animation: fadeUp 2s forwards;
 }
 
 .invite-btn:hover {
@@ -125,9 +131,22 @@ header {
     font-size: 14px;
 }
 
+/* =========================
+   애니메이션
+========================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* =========================
-   📱 모바일 전용 수정
+   📱 모바일 전용
 ========================= */
 @media (max-width: 768px) {
 
@@ -154,7 +173,6 @@ header {
         height: calc(100vh - 90px);
         justify-content: flex-start;
         padding-top: 90px;
-        padding-bottom: 0;
     }
 
     .container h1 {
@@ -178,67 +196,11 @@ header {
         bottom: 16px;
     }
 }
-    /* =========================
-   등장 애니메이션
-========================= */
-
-/* 공통 초기 상태 */
-.animate {
-    opacity: 0;
-    transform: translateY(30px);
-    animation-fill-mode: forwards;
-}
-
-/* 제목 */
-.fade-title {
-    animation: fadeUp 0.9s ease-out 0.1s forwards;
-}
-
-/* 설명 텍스트 */
-.fade-text {
-    animation: fadeUp 0.9s ease-out 0.3s forwards;
-}
-
-/* 버튼 */
-.fade-btn {
-    animation: fadeUpScale 0.9s cubic-bezier(.22,.61,.36,1) 0.55s forwards;
-}
-
-/* 키프레임 */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeUpScale {
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
 </style>
 </head>
 
 <body id="home">
-    
-<script>
-  (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
 
-  ChannelIO('boot', {
-    "pluginKey": "048127a3-ed70-4535-9a24-1fbb571bd585"
-  });
-</script>
-    
 <header>
 <nav class="navbar">
     <a href="#home">홈</a>
@@ -248,20 +210,16 @@ header {
 </nav>
 </header>
 
-<h1 class="animate fade-title">
-    여러분의 서버지킴이, ShieldHub
-</h1>
+<main class="container">
+<h1>여러분의 서버지킴이, ShieldHub</h1>
+<p>아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!</p>
 
-<p class="animate fade-text">
-    아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!
-</p>
-
-<a class="invite-btn animate fade-btn"
+<a class="invite-btn"
    href="https://discord.com/oauth2/authorize?client_id=1454357598252826829"
    target="_blank">
    ShieldHub 초대하기
 </a>
-
+</main>
 
 <div class="toast-wrap" id="toastWrap"></div>
 
@@ -292,9 +250,3 @@ document.addEventListener("keydown", e => {
 
 </body>
 </html>
-
-
-
-
-
-
