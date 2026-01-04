@@ -3,96 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>링크 임베드 미리보기</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 50px;
-        background: #f0f0f0;
-    }
-    input[type="text"] {
-        width: 300px;
-        padding: 10px;
-        font-size: 16px;
-        margin-bottom: 20px;
-    }
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-    .embed-card {
-        margin-top: 20px;
-        width: 400px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        overflow: hidden;
-        display: none;
-    }
-    .embed-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
-    .embed-content {
-        padding: 15px;
-    }
-    .embed-title {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-    .embed-description {
-        font-size: 14px;
-        color: #555;
-    }
-    .embed-link {
-        margin-top: 10px;
-        display: block;
-        color: #1a73e8;
-        text-decoration: none;
-        font-size: 14px;
-    }
-</style>
-</head>
-<body>
-<h1>링크 임베드 미리보기</h1>
-<input type="text" id="urlInput" placeholder="링크를 입력하세요" />
-<button onclick="generateEmbed()">미리보기</button>
+<title>ShieldHub</title>
 
-<div class="embed-card" id="embedCard">
-    <img id="embedImage" src="" alt="링크 이미지" />
-    <div class="embed-content">
-        <div class="embed-title" id="embedTitle">제목</div>
-        <div class="embed-description" id="embedDescription">설명</div>
-        <a id="embedLink" href="#" target="_blank" class="embed-link">링크 열기</a>
-    </div>
-</div>
-
-<script>
-async function generateEmbed() {
-    const url = document.getElementById('urlInput').value.trim();
-    if (!url) return alert('링크를 입력해주세요.');
-
-    // 임시: 외부 메타 정보 없이 기본 카드
-    const embedTitle = "ShieldHub - 여러분의 서버지킴이";
-    const embedDescription = "디스코드 서버 보안과 관리의 새로운 기준, ShieldHub";
-    const embedImage = "https://media.discordapp.net/attachments/1452302186427187404/1455964381975150754/0378399ff72ab267.png?ex=695b413f&is=6959efbf&hm=ea781cce6c5ec020256f67a4893372bb2c5e7501ae943578387c806bfe9a48d9&=&format=webp&quality=lossless&width=856&height=856";
-
-    // 카드 내용 채우기
-    document.getElementById('embedTitle').innerText = embedTitle;
-    document.getElementById('embedDescription').innerText = embedDescription;
-    document.getElementById('embedImage').src = embedImage;
-    document.getElementById('embedLink').href = url;
-    document.getElementById('embedLink').innerText = url;
-
-    document.getElementById('embedCard').style.display = 'block';
-}
-</script>
+<!-- =========================
+     Open Graph (SNS 미리보기)
+========================= -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ShieldHub - 여러분의 서버지킴이">
+<meta property="og:description" content="디스코드 서버 보안과 관리의 새로운 기준, ShieldHub">
+<meta property="og:url" content="https://shieldhub.site">
+<meta property="og:image" content="https://media.discordapp.net/attachments/1452302186427187404/1455964381975150754/0378399ff72ab267.png?ex=695b413f&is=6959efbf&hm=ea781cce6c5ec020256f67a4893372bb2c5e7501ae943578387c806bfe9a48d9&=&format=webp&quality=lossless&width=856&height=856">
+<meta property="og:site_name" content="ShieldHub">
 
 <style>
 @font-face {
@@ -350,3 +271,7 @@ document.addEventListener("keydown", e => {
 
 </body>
 </html>
+
+
+
+
