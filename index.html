@@ -178,6 +178,54 @@ header {
         bottom: 16px;
     }
 }
+    /* =========================
+   등장 애니메이션
+========================= */
+
+/* 공통 초기 상태 */
+.animate {
+    opacity: 0;
+    transform: translateY(30px);
+    animation-fill-mode: forwards;
+}
+
+/* 제목 */
+.fade-title {
+    animation: fadeUp 0.9s ease-out 0.1s forwards;
+}
+
+/* 설명 텍스트 */
+.fade-text {
+    animation: fadeUp 0.9s ease-out 0.3s forwards;
+}
+
+/* 버튼 */
+.fade-btn {
+    animation: fadeUpScale 0.9s cubic-bezier(.22,.61,.36,1) 0.55s forwards;
+}
+
+/* 키프레임 */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUpScale {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
 </style>
 </head>
 
@@ -200,16 +248,20 @@ header {
 </nav>
 </header>
 
-<main class="container">
-<h1>여러분의 서버지킴이, ShieldHub</h1>
-<p>아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!</p>
+<h1 class="animate fade-title">
+    여러분의 서버지킴이, ShieldHub
+</h1>
 
-<a class="invite-btn"
+<p class="animate fade-text">
+    아래의 버튼을 눌러 여러분의 서버에 봇을 초대해보세요!
+</p>
+
+<a class="invite-btn animate fade-btn"
    href="https://discord.com/oauth2/authorize?client_id=1454357598252826829"
    target="_blank">
    ShieldHub 초대하기
 </a>
-</main>
+
 
 <div class="toast-wrap" id="toastWrap"></div>
 
@@ -240,6 +292,7 @@ document.addEventListener("keydown", e => {
 
 </body>
 </html>
+
 
 
 
